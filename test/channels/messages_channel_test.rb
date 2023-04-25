@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class MessagesChannelTest < ActionCable::Channel::TestCase
-  test "subscribes and stream for messages" do
+  test 'subscribes and stream for messages' do
     # Simulate a subscription creation by calling `subscribe`
     subscribe
 

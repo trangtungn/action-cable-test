@@ -50,15 +50,13 @@ Rails.application.configure do
   config.log_level = :debug
 
   # Prepend all log lines with the following tags.
-  config.log_tags = [ :request_id ]
+  config.log_tags = [:request_id]
 
   # Use a different logger for distributed setups.
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
 
-  if ENV["RAILS_LOG_TO_STDOUT"].present?
-    config.logger = ActiveSupport::TaggedLogging.new(Logger.new(STDOUT))
-  end
+  config.logger = ActiveSupport::TaggedLogging.new(Logger.new(STDOUT)) if ENV['RAILS_LOG_TO_STDOUT'].present?
 
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
@@ -84,6 +82,6 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-  config.action_cable.allowed_request_origins = [/http:\/\/*/, /https:\/\/*/]
-  config.web_socket_server_url = "wss://#{ENV['APP_DOMAIN']}/cable" 
+  config.action_cable.allowed_request_origins = [%r{http://*}, %r{https://*}]
+  config.web_socket_server_url = "wss://#{ENV['APP_DOMAIN']}/cable"
 end

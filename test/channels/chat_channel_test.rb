@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class ChatChannelTest < ActionCable::Channel::TestCase
-  test "subscribes and stream for room" do
+  test 'subscribes and stream for room' do
     # Simulate a subscription creation by calling `subscribe`
     subscribe room_id: '15'
 
