@@ -1,38 +1,39 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-ruby '3.0.2'
-gem 'rails', '~> 7.0.4'
+ruby "3.1.2"
+gem "rails", "~> 7.1.2"
 # Use postgresql as the database for Active Record
-gem 'pg'
+gem "pg"
 # Use Puma as the app server
-gem 'puma'
+gem "puma"
 # Use SCSS for stylesheets
-gem 'bootstrap-sass'
-gem 'coffee-rails'
-gem 'sass-rails'
-gem 'uglifier'
+gem "bootstrap-sass"
+gem "coffee-rails"
+gem "sass-rails"
+gem "uglifier"
 
-gem 'jbuilder'
-gem 'jquery-rails'
-gem 'turbolinks'
+gem "jbuilder"
+gem "jquery-rails"
+gem "turbolinks"
 # Use Redis adapter to run Action Cable in production
-gem 'redis'
+gem "redis"
 
 group :production do
-  gem 'rails_12factor'
+  gem "rails_12factor"
 end
 
 group :development, :test do
-  gem 'byebug'
-  gem 'pry'
+  gem "byebug"
+  gem "pry"
+  gem "rubocop-rails"
 end
 
 group :development do
-  gem 'listen'
-  gem 'spring'
-  gem 'spring-watcher-listen'
-  gem 'web-console'
+  gem "listen"
+  gem "spring"
+  gem "spring-watcher-listen"
+  gem "web-console"
 end
 
-gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
+gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
