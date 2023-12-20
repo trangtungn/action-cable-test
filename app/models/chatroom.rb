@@ -12,7 +12,7 @@ class Chatroom < ApplicationRecord
   end
 
   def slugify
-    self.slug = topic.downcase.gsub(' ', '-')
+    self.slug = topic.downcase.gsub(" ", "-")
   end
 
   def sanitize

@@ -1,13 +1,8 @@
 AllCops:
+  NewCops: enable
   Exclude:
-    - "spec/**/*"
-    - "db/schema.rb"
-    - "db/migrate/**/*"
-    - "app/misc/**/*"
-    - "config/**/*"
     - "bin/**/*"
     - "vendor/bundle/**/*"
-    - "lib/**/*"
 
 Style/StringLiterals:
   EnforcedStyle: double_quotes

@@ -16,7 +16,7 @@ Rails.application.configure do
 
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
-  config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
+  config.public_file_server.enabled = ENV["RAILS_SERVE_STATIC_FILES"].present?
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
@@ -56,7 +56,7 @@ Rails.application.configure do
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
 
-  config.logger = ActiveSupport::TaggedLogging.new(Logger.new(STDOUT)) if ENV['RAILS_LOG_TO_STDOUT'].present?
+  config.logger = ActiveSupport::TaggedLogging.new(Logger.new($stdout)) if ENV["RAILS_LOG_TO_STDOUT"].present?
 
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
@@ -83,5 +83,5 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
   config.action_cable.allowed_request_origins = [%r{http://*}, %r{https://*}]
-  config.web_socket_server_url = "wss://#{ENV['APP_DOMAIN']}/cable"
+  config.web_socket_server_url = "wss://#{ENV.fetch('APP_DOMAIN', nil)}/cable"
 end
