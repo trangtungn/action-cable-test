@@ -1,0 +1,29 @@
+# syntax=docker/dockerfile:1
+
+# Base dependency: Ruby 3.2.2. Use the official Ruby image as a base
+FROM ruby:3.2.2 AS base-image
+# Install system dependencies
+RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
+# Copy the Gemfile and Gemfile.lock into the image
+COPY Gemfile Gemfile.lock ./
+# Install gems for production (without gems in test and development groups)
+ENV BUNDLE_WITHOUT=development:test
+RUN gem install bundler
+RUN bundle install && bundle clean --force
+
+FROM base-image AS production
+# Create a directory for your Rails app
+WORKDIR /app
+# Copy the rest of the application code into the image
+COPY . .
+# Precompile assets
+ENV SECRET_KEY_BASE=60780289a94eb56db9d7c6d283cc76ec4580b6f195fdb9715fa5dc46c58f5d87f093e4016ab6612d8d04ff2e6e11fa76a13850734be6dcdcac4b81f5bb9da7bd
+RUN bundle exec rake assets:precompile
+
+COPY entrypoints/ /usr/local/bin/
+ENTRYPOINT ["entrypoint.sh"]
+
+CMD ["bin/rails", "s", "-b", "0.0.0.0"]
+
+# Expose port 3000
+EXPOSE 3000

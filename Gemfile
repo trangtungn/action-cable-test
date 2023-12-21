@@ -11,12 +11,13 @@ gem "puma"
 gem "bootstrap-sass"
 gem "coffee-rails"
 gem "sass-rails"
-gem "uglifier"
+gem "terser"
 
 gem "jbuilder"
 gem "jquery-rails"
 gem "turbolinks"
 # Use Redis adapter to run Action Cable in production
+gem "listen"
 gem "redis"
 
 group :production do
@@ -32,7 +33,6 @@ group :development, :test do
 end
 
 group :development do
-  gem "listen"
   gem "spring"
   gem "spring-watcher-listen"
   gem "web-console"
